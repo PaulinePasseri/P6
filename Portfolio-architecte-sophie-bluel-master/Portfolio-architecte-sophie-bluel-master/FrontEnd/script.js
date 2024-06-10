@@ -1,14 +1,57 @@
-async function generateGallery () {
-    const response = await fetch("http://localhost:5678/api/works")
-    const data = await response.json()
-    let gallery = document.querySelector(".gallery")
-    for (let i=0 ; i < data.length ; i++) {
+let gallery = document.querySelector(".gallery")
+let works = []
+
+// Récupération de l'API
+fetch("http://localhost:5678/api/works").then(response => {
+    response.json().then(data => {
+        works = data
+        generateGallery(works)
+    })
+})
+
+// Galerie générée 
+function generateGallery(images) {
+    gallery.innerHTML = ""
+    images.forEach(image => {
         gallery.innerHTML += 
         `<figure>
-            <img src="${data[i].imageUrl}" alt="galerie"><br>
-            <figcaption>${data[i].title}</figcaption>
+            <img src="${image.imageUrl}" alt="galerie"><br>
+            <figcaption>${image.title}</figcaption>
         </figure>`
-    }
+    })
 }
 
-generateGallery()
+
+// Gestion des filtres 
+const btnTous = document.getElementById("btn-tous")
+btnTous.addEventListener("click", function() {
+    const galerieTous = works
+    generateGallery(galerieTous)
+})
+
+const btnObjets = document.getElementById("btn-objets")
+
+btnObjets.addEventListener("click", function () {
+    const galerieObjets = works.filter(function(item) {
+        return item.category.name === "Objets"
+        })
+        generateGallery(galerieObjets)
+})
+
+const btnAppartements = document.getElementById("btn-appartements")
+
+btnAppartements.addEventListener("click", function () {
+    const galerieAppartements = works.filter(function(item) {
+        return item.category.name === "Appartements"
+        })
+        generateGallery(galerieAppartements)
+})
+
+const btnHotels = document.getElementById("btn-hotels")
+
+btnHotels.addEventListener("click", function () {
+    const galerieHotels = works.filter(function(item) {
+        return item.category.name === "Hotels & restaurants"
+        })
+        generateGallery(galerieHotels)
+})
