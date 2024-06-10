@@ -46,18 +46,24 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+a {
+	text-decoration: none;
+}
 /** end reset css**/
 body {
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #FFFEF8;
 }
 header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
+
 section {
 	margin: 50px 0
 }
@@ -121,10 +127,46 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+#portfolio {
+	margin-left: 3.5em;
+}
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+#filters {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 0 153px 0 212px;
+}
+
+.filters__btn {
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	color: #1D6154;
+	border: solid 1px #1D6154;
+	margin: 2em 0.6em 3em 0;
+	padding: 10px;
+	border-radius: 60px;
+	min-width: 80px;
+}
+
+.filters__btn--clicked {
+	color: white;
+	background-color: #1D6154;
+}
+
+.filters__btn:hover {
+	color: white;
+	background-color: #1D6154;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
