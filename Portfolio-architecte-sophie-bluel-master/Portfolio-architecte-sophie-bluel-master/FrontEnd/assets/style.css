@@ -46,10 +46,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-a {
-	text-decoration: none;
-}
 /** end reset css**/
 body {
 	max-width: 1140px;
@@ -142,6 +138,11 @@ li:hover {
 	flex-direction: row;
 	justify-content: center;
 	margin: 0 153px 0 212px;
+}
+
+
+#filters span {
+	cursor: pointer;
 }
 
 .filters__btn {

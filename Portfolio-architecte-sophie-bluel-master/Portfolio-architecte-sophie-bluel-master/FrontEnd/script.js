@@ -27,6 +27,7 @@ const btnTous = document.getElementById("btn-tous")
 btnTous.addEventListener("click", function() {
     const galerieTous = works
     generateGallery(galerieTous)
+    btnActive(btnTous)
 })
 
 const btnObjets = document.getElementById("btn-objets")
@@ -36,6 +37,7 @@ btnObjets.addEventListener("click", function () {
         return item.category.name === "Objets"
         })
         generateGallery(galerieObjets)
+        btnActive(btnObjets)
 })
 
 const btnAppartements = document.getElementById("btn-appartements")
@@ -45,6 +47,7 @@ btnAppartements.addEventListener("click", function () {
         return item.category.name === "Appartements"
         })
         generateGallery(galerieAppartements)
+        btnActive(btnAppartements)
 })
 
 const btnHotels = document.getElementById("btn-hotels")
@@ -54,4 +57,10 @@ btnHotels.addEventListener("click", function () {
         return item.category.name === "Hotels & restaurants"
         })
         generateGallery(galerieHotels)
+        btnActive(btnHotels)
 })
+
+function btnActive(e) {
+    document.querySelector(".filters__btn--clicked").classList.remove("filters__btn--clicked")    
+    e.classList.add("filters__btn--clicked")
+}
