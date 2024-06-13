@@ -30,6 +30,14 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	max-width: 1140px;
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+	background-color: #FFFEF8;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 ol, ul {
 	list-style: none;
@@ -47,15 +55,6 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
-body {
-	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
-	font-size: 14px;
-	background-color: #FFFEF8;
-	min-height: 100vh;
-}
-
 header {
 	display: flex;
 	justify-content: space-between;
@@ -225,11 +224,22 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+input[type="button"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+}
+
 footer {
 	margin-top: auto;
 	background-color: white;
 	width: 100%;
-	padding: 25px;
+	padding: 20px;
 }
 
 footer nav ul {
@@ -239,7 +249,7 @@ footer nav ul {
 
 /* Page de connexion */
 #connexion {
-	margin: 150px auto 250px auto;
+	margin: auto;
 	width: 379px;
 }
 
