@@ -112,6 +112,10 @@ li:hover {
 	color: #B1663C;
 }
 
+main {
+	margin: 0 5.5em;
+}
+
 /* Partie intro */
 #introduction {
 	display: flex;
@@ -140,6 +144,7 @@ li:hover {
 /* Partie portfolio */
 #portfolio {
 	margin-left: 3.5em;
+	margin-right: 3.5em;
 }
 
 #portfolio h2 {
@@ -253,7 +258,7 @@ input[type="button"]{
 footer {
 	margin-top: auto;
 	background-color: white;
-	width: 100%;
+	width: 1440px;
 	padding: 20px;
 }
 
@@ -300,6 +305,7 @@ footer nav ul {
 	justify-content: center;
 	padding: 20px;
 	gap: 12px;
+	width: 1440px;
 }
 
 /* Partie modale */
@@ -310,7 +316,7 @@ footer nav ul {
 .button_edit {
 	position: absolute;
 	top: 10px;
-	left: 670px;
+	left: 570px;
 }
 
 .js-modal {
@@ -360,12 +366,20 @@ footer nav ul {
 	to {opacity: 0;}
 }
 
-.js-modal-close {
+.modal button {
 	background-color: white;
 	border: none;
 	font-size: 18px;
 	margin-left: 600px;
 	cursor: pointer;
+}
+
+.js-modal-close {
+	margin-left: 600px;
+}
+
+.js-modal-previous {
+	margin-right: 20px;
 }
 
 .btn_add {
