@@ -192,6 +192,17 @@ li:hover {
 
 }
 
+/* Mode édition */
+.editMode {
+	background-color: black;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 20px;
+	gap: 12px;
+}
+
 /* Partie modale */
 .title_edit {
 	position: relative;
