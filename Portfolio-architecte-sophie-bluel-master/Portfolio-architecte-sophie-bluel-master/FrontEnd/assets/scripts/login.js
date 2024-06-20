@@ -21,14 +21,14 @@ function login() {
     .then(response => {
         if (!response.ok) {
             // If the response status is not OK, throw an error
-            throw new Error("Les identifiants sont mauvais");
+            throw new Error("Erreur dans l’identifiant ou le mot de passe");
         }
         return response.json();
     })
     .then(data => {
         // Handle the data from the response
         localStorage.setItem("token", data.token)
-        window.location.href = "indexedit.html";
+        window.location.href = "..indexedit.html";
     })
     .catch(err => {
         // Handle errors both from fetch and the response
