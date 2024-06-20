@@ -7,6 +7,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/22175fe4ef.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
@@ -17,7 +18,7 @@
 		<ul>
 			<li><a href="#projets-anchor">projets</a></li>
 			<li><a href="#contact-anchor">contact</a></li>
-			<li><a href="./login.html">login</a></li>
+			<li><a href="./index.html">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -34,20 +35,32 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<a id="projets-anchor"></a>
+    <a id="projets-anchor"></a>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<div id="filters">
-			<span class="filters__btn filters__btn--clicked" id="btn-tous">Tous</span>
-			<span class="filters__btn" id="btn-objets">Objets</span>
-			<span class="filters__btn" id="btn-appartements">Appartements</span>
-			<span class="filters__btn" id="btn-hotels">Hotels & Restaurants</span>
-		</div>
+		<div class="title_edit">
+            <h2>Mes Projets</h2>
+            <div class="button_edit">
+                <i class="fa-regular fa-pen-to-square"></i><a href="#modal" class="js-modal">modifier</a>
+            </div>
+            <aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="false" style="display:none;">
+                <div class="modal_wrapper js-modal-stop">
+                    <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+                    <h3>Galerie photo</h3>
+                    <a href="#" class="btn_add">Ajouter une photo</a>
+                </div>
+            </aside>
+            <div id="filters" style="display:none;">
+                <span class="filters__btn filters__btn--clicked" id="btn-tous">Tous</span>
+                <span class="filters__btn" id="btn-objets">Objets</span>
+                <span class="filters__btn" id="btn-appartements">Appartements</span>
+                <span class="filters__btn" id="btn-hotels">Hotels & Restaurants</span>
+            </div>
+        </div>
 		<div class="gallery">
 			
 		</div>
 	</section>
-	<a id="contact-anchor"></a>
+    <a id="contact-anchor"></a>
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
