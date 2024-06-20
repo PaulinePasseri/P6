@@ -387,10 +387,28 @@ footer nav ul {
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin : 3em auto ;
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
 	padding: 10px 49px;
 	display: block;
+	margin: 0;
+}
+
+#galleryEdit  {
+	margin: 40px 100px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	border-bottom: solid 1px 
+	#B3B3B3;
+	padding-bottom: 67px;
+	padding-left: 40px;
+}
+#galleryEdit img {
+	width: 78px;
+	height: 104px;
+	margin: 0 9px 29px 0;
 }
