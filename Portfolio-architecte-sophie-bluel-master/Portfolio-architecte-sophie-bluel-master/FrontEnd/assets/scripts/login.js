@@ -28,7 +28,7 @@ function login() {
     .then(data => {
         // Handle the data from the response
         localStorage.setItem("token", data.token)
-        window.location.href = "..indexedit.html";
+        window.location.href = "../indexedit.html";
     })
     .catch(err => {
         // Handle errors both from fetch and the response
