@@ -49,6 +49,7 @@ const closeModal = function(e) {
     modal.removeEventListener("click", closeModal)
     modal.querySelector(".js-modal-close").removeEventListener("click", closeModal)
     modal.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation)
+    document.querySelector("#galleryEdit").innerHTML = ""
 }
 
 // Permet de bloquer la propagation de l'événement e 

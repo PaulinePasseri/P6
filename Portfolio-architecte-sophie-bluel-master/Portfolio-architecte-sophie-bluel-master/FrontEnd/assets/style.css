@@ -32,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	max-width: 1140px;
-	margin:auto;
+	margin: auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 	background-color: #FFFEF8;
@@ -256,7 +256,7 @@ input[type="button"]{
 }
 
 footer {
-	margin-top: auto;
+	margin-left: -150px;
 	background-color: white;
 	width: 1440px;
 	padding: 20px;
@@ -322,6 +322,7 @@ footer nav ul {
 	padding: 20px;
 	gap: 12px;
 	width: 1440px;
+	margin-left: -150px;
 }
 
 /* Partie modale */
@@ -403,7 +404,6 @@ footer nav ul {
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto;
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
