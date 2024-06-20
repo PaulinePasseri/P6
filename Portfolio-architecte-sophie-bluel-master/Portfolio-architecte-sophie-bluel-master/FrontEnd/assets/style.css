@@ -44,7 +44,7 @@ ol, ul {
 	list-style: none;
 }
 a {
-	color: black;
+	color: #3D3D3D;
 }
 blockquote, q {
 	quotes: none;
@@ -295,6 +295,22 @@ footer nav ul {
 	margin: 2em 0 1em 0;
 }
 
+#connexion a {
+	text-align: center;
+	color: #3D3D3D;
+	font-weight: 500;
+	font-size: 14px;
+	font-family: 'Work Sans';
+	text-decoration: underline;
+}
+
+#error {
+	text-align: center;
+	margin-bottom: 30px;
+	color: #B1663C;
+	font-weight: 600;
+}
+
 
 /* Mode édition */
 .editMode {
@@ -348,7 +364,7 @@ footer nav ul {
 	align-items: center;
 	background-color: white;
 	width: 630px;
-	height: 688px;
+	height: 650px;
 	border-radius: 10px;
 	padding: 30px;
 	max-width: calc(100vw - 20px);
@@ -382,12 +398,12 @@ footer nav ul {
 	margin-right: 20px;
 }
 
-.btn_add {
+.js-modal-add {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 3em auto ;
+	margin : 2em auto;
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
@@ -397,16 +413,17 @@ footer nav ul {
 }
 
 #galleryEdit  {
-	margin: 40px 100px;
+	margin: 40px 70px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: center;
 	border-bottom: solid 1px 
 	#B3B3B3;
-	padding-bottom: 67px;
+	padding-bottom: 37px;
 	padding-left: 40px;
 }
+
 #galleryEdit img {
 	width: 78px;
 	height: 104px;
