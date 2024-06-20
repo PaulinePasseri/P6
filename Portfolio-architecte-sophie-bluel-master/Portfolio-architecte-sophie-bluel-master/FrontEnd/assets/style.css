@@ -156,7 +156,7 @@ main {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	margin: 0 153px 0 212px;
+	align-items: center;
 }
 
 
@@ -171,10 +171,12 @@ main {
 	text-align: center;
 	color: #1D6154;
 	border: solid 1px #1D6154;
-	margin: 2em 0.6em 3em 0;
+	margin-bottom: 50px;
+	margin-right: 10px;
 	padding: 10px;
 	border-radius: 60px;
-	min-width: 80px;
+	min-width: 100px;
+	max-width: 200px;
 }
 
 .filters__btn--clicked {
