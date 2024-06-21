@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     if (!localStorage.getItem("token")) {
-        window.location.href = "login.html";
+        window.location.href = "../login.html";
     }
 })
 
@@ -33,8 +33,8 @@ const openModal = function(e) {
 
 }
 
-const a = document.querySelector(".js-modal")
-a.addEventListener("click", openModal)
+const firstModal = document.querySelector(".js-modal")
+firstModal.addEventListener("click", openModal)
 
 // Fermeture de la modale
 const closeModal = function(e) {
@@ -78,3 +78,21 @@ window.addEventListener("keydown", function(e) {
     }
 })
 
+// Changement de fenêtre modale 
+const secondModal = document.querySelector(".js-modal-add")
+secondModal.addEventListener("click", (e) => {
+    closeModal(e)
+    setTimeout(() => {
+        modal = document.querySelector("#modalAdd")
+        openModal({ preventDefault: () => {}, target: { getAttribute: () => "#modalAdd" } })
+    }, 500)
+})
+
+const previousModal = document.querySelector(".js-modal-previous")
+previousModal.addEventListener("click", (e) => {
+    closeModal(e)
+    setTimeout(() => {
+        modal = document.querySelector("#modal")
+        openModal({ preventDefault: () => {}, target: { getAttribute: () => "#modal" } })
+    }, 500)
+})

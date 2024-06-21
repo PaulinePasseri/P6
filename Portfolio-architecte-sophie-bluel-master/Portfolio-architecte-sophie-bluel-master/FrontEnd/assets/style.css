@@ -385,19 +385,21 @@ footer nav ul {
 	to {opacity: 0;}
 }
 
-.modal button {
+.js-modal-close {
 	background-color: white;
 	border: none;
 	font-size: 18px;
 	margin-left: 600px;
 	cursor: pointer;
-}
-
-.js-modal-close {
 	margin-left: 600px;
 }
 
 .js-modal-previous {
+	background-color: white;
+	border: none;
+	font-size: 18px;
+	margin-left: 600px;
+	cursor: pointer;
 	margin-right: 20px;
 }
 
@@ -406,12 +408,13 @@ footer nav ul {
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	width: 180px;
 	text-align: center;
 	border-radius: 60px;
 	padding: 10px 49px;
 	display: block;
 	margin: 0;
+	border: none;
+	cursor: pointer;
 }
 
 #galleryEdit  {
