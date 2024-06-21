@@ -456,6 +456,7 @@ footer nav ul {
 
 .secondModal-form p {
 	font-size: 10px;
+	margin-top: -7px;
 }
 
 .secondModal-img {
@@ -474,6 +475,12 @@ footer nav ul {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+}
+
+.secondModal-file label {
+	cursor: pointer;
+	text-align: center;
 	background-color: #CBD6DC;
 	border-radius: 50px;
 	color: #306685;
@@ -481,7 +488,8 @@ footer nav ul {
 	width: 173px;
 	font-size: 14px;
 	font-weight: 500;
-	margin: 7px 0;
+	margin: 7px 0 -4px 0;
+	padding: 10px 0;
 }
 
 .fa-image {
