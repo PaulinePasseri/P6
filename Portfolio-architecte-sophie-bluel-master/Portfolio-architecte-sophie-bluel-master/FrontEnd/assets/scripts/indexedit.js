@@ -11,7 +11,6 @@ let focusables = []
 
 // Ouverture de la modale
 const openModal = function(e) {
-    e.preventDefault()
     modal = document.querySelector(e.target.getAttribute("href"))
     focusables = Array.from(modal.querySelectorAll(focusableSelector))
     modal.style.display = null
@@ -39,17 +38,18 @@ firstModal.addEventListener("click", openModal)
 // Fermeture de la modale
 const closeModal = function(e) {
     if (modal === null) return
-    e.preventDefault()
     window.setTimeout(function() {
         modal.style.display = "none"
         modal = null
-    }, 500)
+    }, 200)
     modal.setAttribute("aria-hidden", "true")
     modal.removeAttribute("aria-modal")
     modal.removeEventListener("click", closeModal)
     modal.querySelector(".js-modal-close").removeEventListener("click", closeModal)
     modal.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation)
-    document.querySelector("#galleryEdit").innerHTML = ""
+    setTimeout(() => {
+        document.querySelector("#galleryEdit").innerHTML = ""
+    }, 200)
 }
 
 // Permet de bloquer la propagation de l'événement e 
@@ -84,8 +84,8 @@ secondModal.addEventListener("click", (e) => {
     closeModal(e)
     setTimeout(() => {
         modal = document.querySelector("#modalAdd")
-        openModal({ preventDefault: () => {}, target: { getAttribute: () => "#modalAdd" } })
-    }, 500)
+        openModal({target: {getAttribute: () => "#modalAdd"}})
+    }, 200)
 })
 
 const previousModal = document.querySelector(".js-modal-previous")
@@ -93,6 +93,6 @@ previousModal.addEventListener("click", (e) => {
     closeModal(e)
     setTimeout(() => {
         modal = document.querySelector("#modal")
-        openModal({ preventDefault: () => {}, target: { getAttribute: () => "#modal" } })
-    }, 500)
+        openModal({target: {getAttribute: () => "#modal"}})
+    }, 200)
 })
