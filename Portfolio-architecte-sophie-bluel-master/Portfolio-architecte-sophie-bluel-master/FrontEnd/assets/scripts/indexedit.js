@@ -23,9 +23,15 @@ const openModal = function(e) {
     fetch("http://localhost:5678/api/works").then(response => {
         response.json().then(data => {
             data.forEach(work => {
+                let container = document.createElement("div")
+                container.classList.add("image-container")
                 let images = document.createElement("img")
                 images.src = work.imageUrl
-                document.querySelector("#galleryEdit").appendChild(images)
+                container.appendChild(images)
+                let icons = document.createElement("span")
+                icons.innerHTML = `<i class="fa-solid fa-trash-can"></i>`
+                container.appendChild(icons)
+                document.querySelector("#galleryEdit").appendChild(container)
             })
         })
     })

@@ -427,12 +427,29 @@ footer nav ul {
 	border-bottom: solid 1px #B3B3B3;
 	padding-bottom: 37px;
 	padding-left: 40px;
+	position: relative;
 }
 
-#galleryEdit img {
-	width: 78px;
-	height: 104px;
-	margin: 0 9px 29px 0;
+.image-container {
+    position: relative;
+    margin: 0 9px 29px 0;
+}
+
+.image-container img {
+    width: 78px;
+    height: 104px;
+}
+
+.image-container i {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    background-color: black;
+    padding: 5px;
+    color: white;
+    border-radius: 2px;
+	font-size: 10px;
+	cursor: pointer;
 }
 
 /* Deuxième fenêtre modale */
