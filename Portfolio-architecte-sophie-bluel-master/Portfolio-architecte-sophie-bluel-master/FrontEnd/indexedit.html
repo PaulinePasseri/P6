@@ -45,7 +45,9 @@
                 </div>
                 <aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="false" style="display:none;">
                     <div class="modal_wrapper js-modal-stop">
-                        <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+                        <div class="firstModal-btn">
+                            <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
                         <h3>Galerie photo</h3>
                         <div id="galleryEdit"></div>
                         <button class="js-modal-add">Ajouter une photo</button>
@@ -53,9 +55,37 @@
                 </aside>
                 <aside id="modalAdd" class="modal" aria-hidden="true" role="dialog" aria-modal="false" style="display:none;">
                     <div class="modal_wrapper js-modal-stop">
-                        <button class="js-modal-previous"><i class="fa-solid fa-arrow-left"></i></button>
-                        <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+                        <div class="secondModal-btns">
+                            <button class="js-modal-previous"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
                         <h3>Ajout photo</h3>
+                        <form method="post" enctype="multipart/form-data" class="form">
+                            <div class="secondModal-form">
+                                <div class="secondModal-img">
+                                    <i class="fa-regular fa-image"></i>
+                                    <div class="secondModal-file">
+                                        <label for="image-upload">+ Ajouter photo</label>
+                                        <input type="file" id="image-upload" name="image-upload" style="visibility:hidden;" accept=".jpg, .jpeg, .png">
+                                    </div>
+                                    <p>jpg, png : 4mo max</p>
+                                </div>
+                                <div class="secondModal-title">
+                                    <label for="image-title">Titre</label>
+                                    <input type="text" name="image-title" id="image-title">
+                                </div>
+                                <div class="secondModal-category">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <label for="image-category">Catégorie</label>
+                                    <select name="image-category" id="image-category">
+                                        <option value="" selected disabled></option>
+                                        <option value="objets">Objets</option>
+                                        <option value="appartements">Appartements</option>
+                                        <option value="hotels-restaurants">Hotels & restaurants</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="submit" value="Valider" id="secondModal-submit">
                     </div>
                 </aside>
                 <div id="filters" style="display:none;">
