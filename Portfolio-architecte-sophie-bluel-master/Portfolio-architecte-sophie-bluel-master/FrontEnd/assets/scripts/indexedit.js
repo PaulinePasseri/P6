@@ -50,6 +50,52 @@ const openModal = function(e) {
 }
 
 
+function postWork() {
+    const reader = new FileReader();
+    let file = document.querySelector("#image-upload").files[0];
+    console.log(file);
+
+    reader.onload = function(event) {
+        const binaryString = event.target.result;
+        // Convert the binary string to Base64
+        const base64String = btoa(binaryString);
+
+        // Create a FormData object
+        let formData = new FormData();
+        formData.append("title", document.querySelector("#image-title").value);
+        formData.append("image", file); // Append the file directly instead of the base64 string
+        formData.append("category", document.querySelector("#image-category").value);
+
+        console.log([...formData]); // Log the formData content for debugging
+
+        fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            body: formData
+        }).then(response => {
+            if (!response.ok) {
+                // If the response status is not OK, throw an error
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the data from the response
+            console.log(data.message);
+            closeModal();
+        })
+        .catch(err => {
+            // Handle errors both from fetch and the response
+            console.log(err);
+            document.querySelector("#error").innerHTML = err.message;
+        });
+    };
+
+    reader.readAsBinaryString(file);
+}
+
 const firstModal = document.querySelector(".js-modal")
 firstModal.addEventListener("click", openModal)
 

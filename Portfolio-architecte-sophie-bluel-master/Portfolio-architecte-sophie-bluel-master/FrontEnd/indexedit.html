@@ -66,18 +66,18 @@
                                     <i class="fa-regular fa-image"></i>
                                     <div class="secondModal-file">
                                         <label for="image-upload">+ Ajouter photo</label>
-                                        <input type="file" id="image-upload" name="image-upload" style="visibility:hidden;" accept=".jpg, .jpeg, .png">
+                                        <input type="file" id="image-upload" name="image" style="visibility:hidden;" accept=".jpg, .jpeg, .png">
                                     </div>
                                     <p>jpg, png : 4mo max</p>
                                 </div>
                                 <div class="secondModal-title">
                                     <label for="image-title">Titre</label>
-                                    <input type="text" name="image-title" id="image-title">
+                                    <input type="text" name="title" id="image-title">
                                 </div>
                                 <div class="secondModal-category">
                                     <i class="fa-solid fa-chevron-down"></i>
                                     <label for="image-category">Catégorie</label>
-                                    <select name="image-category" id="image-category">
+                                    <select name="category" id="image-category">
                                         <option value="" selected disabled></option>
                                         <option value="objets">Objets</option>
                                         <option value="appartements">Appartements</option>
@@ -85,7 +85,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <input type="submit" value="Valider" id="secondModal-submit">
+                            <input type="button" value="Valider" id="secondModal-submit" onclick="postWork()">
                         </form>
                     </div>
                 </aside>
