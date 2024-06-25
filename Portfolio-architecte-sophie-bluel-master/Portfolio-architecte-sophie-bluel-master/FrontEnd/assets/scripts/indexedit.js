@@ -19,9 +19,13 @@ const openModal = function(e) {
     modal.addEventListener("click", closeModal)
     modal.querySelector(".js-modal-close").addEventListener("click", closeModal)
     modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation)
-    
+
+    // Fetch images and populate modal
     fetch("http://localhost:5678/api/works").then(response => {
         response.json().then(data => {
+            // Clear existing content to avoid duplication
+            document.querySelector("#galleryEdit").innerHTML = ""
+
             data.forEach(work => {
                 let container = document.createElement("div")
                 container.classList.add("image-container")
@@ -35,38 +39,46 @@ const openModal = function(e) {
                 icons.innerHTML = `<i class="fa-solid fa-trash-can"></i>`
                 container.appendChild(icons)
 
-                
+                // Add event listener to delete icon
                 icons.addEventListener("click", () => {
-                    container.remove()
-                    let mainImage = document.querySelector(`.gallery img[id='${work.id}']`).closest("figure")
-                    mainImage.remove()
+                    // Delete image from server
+                    fetch(`http://localhost:5678/api/works/${work.id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.getItem("token")
+                        },
+                    }).then(response => {
+                        if (response.ok) {
+                            // Remove image from modal
+                            container.remove()
+                            // Remove image from main gallery
+                            let mainImage = document.querySelector(`.gallery img[id='${work.id}']`).closest("figure")
+                            if (mainImage) {
+                                mainImage.remove()
+                            }
+                        } else {
+                            console.error('Erreur lors de la suppression de l\'image')
+                        }
+                    }).catch(error => {
+                        console.error('Erreur lors de la requête de suppression', error)
+                    })
                 })
 
                 document.querySelector("#galleryEdit").appendChild(container)
             })
         })
     })
-
 }
 
 
+
 function postWork() {
-    const reader = new FileReader();
-    let file = document.querySelector("#image-upload").files[0];
-    console.log(file);
 
-    reader.onload = function(event) {
-        const binaryString = event.target.result;
-        // Convert the binary string to Base64
-        const base64String = btoa(binaryString);
-
-        // Create a FormData object
-        let formData = new FormData();
-        formData.append("title", document.querySelector("#image-title").value);
-        formData.append("image", file); // Append the file directly instead of the base64 string
-        formData.append("category", document.querySelector("#image-category").value);
-
-        console.log([...formData]); // Log the formData content for debugging
+    const formData = new FormData()
+    formData.append("title", document.querySelector('#image-title').value);
+    formData.append("image", document.querySelector("#image-upload").files[0]);
+    formData.append("category", document.querySelector('#image-category').value);
+      
 
         fetch("http://localhost:5678/api/works", {
             method: "POST",
@@ -79,21 +91,20 @@ function postWork() {
                 // If the response status is not OK, throw an error
                 throw new Error("Network response was not ok");
             }
-            return response.json();
+             response.json()
+             .then(data => {
+                // Handle the data from the response
+                console.log(data.message);
+                closeModal();
+            })
         })
-        .then(data => {
-            // Handle the data from the response
-            console.log(data.message);
-            closeModal();
-        })
+       
         .catch(err => {
             // Handle errors both from fetch and the response
             console.log(err);
             document.querySelector("#error").innerHTML = err.message;
         });
-    };
-
-    reader.readAsBinaryString(file);
+ 
 }
 
 const firstModal = document.querySelector(".js-modal")

@@ -60,7 +60,7 @@
                             <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
                         </div>
                         <h3>Ajout photo</h3>
-                        <form method="post" enctype="multipart/form-data" class="form">
+                        <form method="post" action="http://localhost:5678/api/works" class="form">
                             <div class="secondModal-form">
                                 <div class="secondModal-img">
                                     <i class="fa-regular fa-image"></i>
@@ -79,14 +79,16 @@
                                     <label for="image-category">Catégorie</label>
                                     <select name="category" id="image-category">
                                         <option value="" selected disabled></option>
-                                        <option value="objets">Objets</option>
-                                        <option value="appartements">Appartements</option>
-                                        <option value="hotels-restaurants">Hotels & restaurants</option>
+                                        <option value="1">Objets</option>
+                                        <option value="2">Appartements</option>
+                                        <option value="3">Hotels & restaurants</option>
                                     </select>
                                 </div>
                             </div>
                             <input type="button" value="Valider" id="secondModal-submit" onclick="postWork()">
+
                         </form>
+
                     </div>
                 </aside>
                 <div id="filters" style="display:none;">
