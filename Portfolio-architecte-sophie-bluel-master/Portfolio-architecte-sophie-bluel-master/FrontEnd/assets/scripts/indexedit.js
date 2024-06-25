@@ -25,18 +25,30 @@ const openModal = function(e) {
             data.forEach(work => {
                 let container = document.createElement("div")
                 container.classList.add("image-container")
+
                 let images = document.createElement("img")
                 images.src = work.imageUrl
+                images.setAttribute("id", work.id)
                 container.appendChild(images)
+
                 let icons = document.createElement("span")
                 icons.innerHTML = `<i class="fa-solid fa-trash-can"></i>`
                 container.appendChild(icons)
+
+                
+                icons.addEventListener("click", () => {
+                    container.remove()
+                    let mainImage = document.querySelector(`.gallery img[id='${work.id}']`).closest("figure")
+                    mainImage.remove()
+                })
+
                 document.querySelector("#galleryEdit").appendChild(container)
             })
         })
     })
 
 }
+
 
 const firstModal = document.querySelector(".js-modal")
 firstModal.addEventListener("click", openModal)

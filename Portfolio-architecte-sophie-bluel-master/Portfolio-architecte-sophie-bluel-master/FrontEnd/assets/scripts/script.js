@@ -15,7 +15,7 @@ function generateGallery(images) {
     images.forEach(image => {
         gallery.innerHTML += 
         `<figure>
-            <img src="${image.imageUrl}" alt="galerie"><br>
+            <img src="${image.imageUrl}" alt="galerie" id="${image.id}"><br>
             <figcaption>${image.title}</figcaption>
         </figure>`
     })
