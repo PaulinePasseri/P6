@@ -73,6 +73,20 @@ const openModal = function(e) {
 
 
 function postWork() {
+    // Récupérer les valeurs des champs
+    const title = document.querySelector('#image-title').value.trim();
+    const image = document.querySelector('#image-upload').files[0];
+    const category = document.querySelector('#image-category').value.trim();
+    const errorElement = document.querySelector('#error');
+
+    // Réinitialiser le message d'erreur
+    errorElement.innerHTML = '';
+
+    // Vérifier si les champs sont remplis
+    if (!title || !image || !category) {
+        errorElement.innerHTML = 'Tous les champs doivent être remplis.';
+        return;
+    }
 
     const formData = new FormData()
     formData.append("title", document.querySelector('#image-title').value);
@@ -89,7 +103,7 @@ function postWork() {
         }).then(response => {
             if (!response.ok) {
                 // If the response status is not OK, throw an error
-                throw new Error("Network response was not ok");
+                throw new Error("Erreur dans la réponse");
             }
              response.json()
              .then(data => {
