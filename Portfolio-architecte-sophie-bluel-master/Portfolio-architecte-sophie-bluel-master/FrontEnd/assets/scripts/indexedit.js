@@ -20,10 +20,8 @@ const openModal = function(e) {
     modal.querySelector(".js-modal-close").addEventListener("click", closeModal)
     modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation)
 
-    // Fetch images and populate modal
     fetch("http://localhost:5678/api/works").then(response => {
         response.json().then(data => {
-            // Clear existing content to avoid duplication
             document.querySelector("#galleryEdit").innerHTML = ""
 
             data.forEach(work => {
@@ -35,13 +33,11 @@ const openModal = function(e) {
                 images.setAttribute("id", work.id)
                 container.appendChild(images)
 
+                // Suppression d'un travail 
                 let icons = document.createElement("span")
                 icons.innerHTML = `<i class="fa-solid fa-trash-can"></i>`
                 container.appendChild(icons)
-
-                // Add event listener to delete icon
                 icons.addEventListener("click", () => {
-                    // Delete image from server
                     fetch(`http://localhost:5678/api/works/${work.id}`, {
                         method: 'DELETE',
                         headers: {
@@ -49,9 +45,7 @@ const openModal = function(e) {
                         },
                     }).then(response => {
                         if (response.ok) {
-                            // Remove image from modal
                             container.remove()
-                            // Remove image from main gallery
                             let mainImage = document.querySelector(`.gallery img[id='${work.id}']`).closest("figure")
                             if (mainImage) {
                                 mainImage.remove()
@@ -70,24 +64,22 @@ const openModal = function(e) {
     })
 }
 
+const firstModal = document.querySelector(".js-modal")
+firstModal.addEventListener("click", openModal)
 
-
+// Poster un nouveau travail
 function postWork() {
-    // Récupérer les valeurs des champs
+    // Vérification que tous les champs sont remplis
     const title = document.querySelector('#image-title').value.trim();
     const image = document.querySelector('#image-upload').files[0];
     const category = document.querySelector('#image-category').value.trim();
     const errorElement = document.querySelector('#error');
-
-    // Réinitialiser le message d'erreur
     errorElement.innerHTML = '';
-
-    // Vérifier si les champs sont remplis
     if (!title || !image || !category) {
         errorElement.innerHTML = 'Tous les champs doivent être remplis.';
         return;
     }
-
+    // Récupération des données du formulaire
     const formData = new FormData()
     formData.append("title", document.querySelector('#image-title').value);
     formData.append("image", document.querySelector("#image-upload").files[0]);
@@ -102,27 +94,39 @@ function postWork() {
             body: formData
         }).then(response => {
             if (!response.ok) {
-                // If the response status is not OK, throw an error
                 throw new Error("Erreur dans la réponse");
             }
              response.json()
              .then(data => {
-                // Handle the data from the response
                 console.log(data.message);
                 closeModal();
             })
         })
-       
         .catch(err => {
-            // Handle errors both from fetch and the response
             console.log(err);
             document.querySelector("#error").innerHTML = err.message;
         });
  
 }
 
-const firstModal = document.querySelector(".js-modal")
-firstModal.addEventListener("click", openModal)
+// Mettre l'image sélectionnée en preview
+document.querySelector("#image-upload").addEventListener("change", function() {
+    const imageFile = this.files[0];
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const imagePreview = document.querySelector("#image-preview");
+            imagePreview.src = event.target.result;
+            imagePreview.style.display = "block";
+
+            // Masquer le texte, le label et l'icône
+            document.querySelector("#image-icon").style.display = "none";
+            document.querySelector("#image-label-container").style.display = "none";
+            document.querySelector("#image-requirements").style.display = "none";
+        };
+        reader.readAsDataURL(imageFile);
+    }
+});
 
 // Fermeture de la modale
 const closeModal = function(e) {
