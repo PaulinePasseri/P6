@@ -78,7 +78,7 @@ function postWork() {
     if (!title || !image || !category) {
         errorElement.innerHTML = 'Tous les champs doivent être remplis.';
         return;
-    }
+    } 
     // Récupération des données du formulaire
     const formData = new FormData()
     formData.append("title", document.querySelector('#image-title').value);
@@ -127,6 +127,25 @@ document.querySelector("#image-upload").addEventListener("change", function() {
         reader.readAsDataURL(imageFile);
     }
 });
+
+// Changement de la couleur du bouton valider
+document.querySelector('#image-title').addEventListener('input', submitForm);
+document.querySelector('#image-upload').addEventListener('change', submitForm);
+document.querySelector('#image-category').addEventListener('change', submitForm);
+function submitForm() {
+    const title = document.querySelector('#image-title').value.trim();
+    const image = document.querySelector('#image-upload').files[0];
+    const category = document.querySelector('#image-category').value.trim();
+    const submitButton = document.querySelector('#secondModal-submit');
+    
+    if (title && image && category) {
+        submitButton.style.backgroundColor = '#1D6154';
+    } else {
+        submitButton.style.backgroundColor = ''; 
+    }
+}
+
+document.addEventListener('DOMContentLoaded', submitForm);
 
 // Fermeture de la modale
 const closeModal = function(e) {
