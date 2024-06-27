@@ -98,7 +98,7 @@ function postWork() {
             }
              response.json()
              .then(data => {
-                console.log(data.message);
+                getWorks();
                 closeModal();
             })
         })

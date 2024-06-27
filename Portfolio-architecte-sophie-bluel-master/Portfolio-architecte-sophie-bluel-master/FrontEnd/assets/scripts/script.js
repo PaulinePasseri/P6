@@ -1,13 +1,17 @@
 let gallery = document.querySelector(".gallery")
 let works = []
 
+function getWorks() {
 // Récupération de l'API
-fetch("http://localhost:5678/api/works").then(response => {
-    response.json().then(data => {
-        works = data
-        generateGallery(works)
+    fetch("http://localhost:5678/api/works").then(response => {
+        response.json().then(data => {
+            works = data
+            generateGallery(works)
+        })
     })
-})
+
+}
+
 
 // Galerie générée 
 function generateGallery(images) {
@@ -65,3 +69,5 @@ function btnActive(e) {
     e.classList.add("filters__btn--clicked")
 }
 
+
+getWorks()
